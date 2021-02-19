@@ -5,7 +5,7 @@
 ## Automate the generation of subtitles for other languages.
 
 ## :cinema: Video:
-* 
+* https://youtu.be/xnNB2NdUYUk
 
 ## :grey_question: What is it?
 * Uses GoogleTranslate to create subtitle files for imported audio. If video, converts the video to .wav and does the same thing. Has potential to translate between languages.
