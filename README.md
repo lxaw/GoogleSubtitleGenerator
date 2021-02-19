@@ -19,7 +19,7 @@ for something like getting translations of audiobooks, or podcasts (anything wit
 * Translates audio clips!
 * Translates video clips!
 * Creates subtitle files for each clip!
-* Allows for translation from a source lang to a target lang!
+* Allows for translation from a source lang to a target lang! (Look at the files w/in here)
 
 ## :package: Modules / Packages:
 * speech_recognition:
