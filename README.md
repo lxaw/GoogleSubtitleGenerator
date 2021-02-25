@@ -22,13 +22,13 @@ for something like getting translations of audiobooks, or podcasts (anything wit
 * Allows for translation from a source lang to a target lang! (Look at the files w/in here)
 
 ## :package: Modules / Packages:
-* speech_recognition:
-* moviepy:
-* send2trash:
-* os:
-* time:
-* pydub:
-* math:
+* speech_recognition: https://pypi.org/project/SpeechRecognition/
+* moviepy: https://pypi.org/project/moviepy/
+* send2trash: https://pypi.org/project/Send2Trash/
+* os: https://docs.python.org/3/library/os.html
+* time: https://docs.python.org/3/library/time.html
+* pydub: https://pypi.org/project/pydub/
+* math: https://docs.python.org/3/library/math.html
 
 
 ###### :hammer: To do:
