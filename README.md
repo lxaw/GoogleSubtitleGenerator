@@ -1,7 +1,5 @@
 # GoogleSubtitleGenerater
 
-# GoogleTranslate Sub Generator
-
 ## Automate the generation of subtitles for other languages.
 
 ## :cinema: Video:
