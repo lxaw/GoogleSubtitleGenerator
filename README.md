@@ -1,4 +1,4 @@
-# GoogleSubtitleGenerater
+# GoogleSubtitleGenerator
 
 ## Automate the generation of subtitles for other languages.
 
@@ -28,4 +28,6 @@ for something like getting translations of audiobooks, or podcasts (anything wit
 
 ###### :hammer: To do:
 * See if there is anyway to get the timestamps. Try to play around with slowing down the audio / changing pitch to improve translation quality.
-
+* 
+## ❤️ How to Support ❤️
+- If this code or anyother I have written has helped you, feel free to make a donation at https://www.buymeacoffee.com/whalenlexn.
