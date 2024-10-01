@@ -38,4 +38,7 @@ if __name__ == "__main__":
     MT.scrape_show(YOUR_LANG,YOUR_FLDR)
     print("Done")
 
-    
+#TODO Timestamps
+#TODO Subtitle format
+#TODO Translation
+#TODO Ease of use

@@ -3,7 +3,6 @@ from audio_dicer import AudioDicer
 import os
 import time
 import moviepy.editor as mp
-import send2trash
 
 ##Created by Lex Whalen 2/19/21
 class AudioVideoRecognizer():
@@ -20,7 +19,7 @@ class AudioVideoRecognizer():
 
     def trash_file(self,file_path):
         #sends file to trash
-        send2trash.send2trash(file_path)
+        os.remove(file_path)
 
     def slice_aud(self,file_path):
         """Dices audio into SECONDS seconds. I did 30 in the video, but 45 works better."""

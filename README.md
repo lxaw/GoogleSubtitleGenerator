@@ -19,7 +19,6 @@ for something like getting translations of audiobooks, or podcasts (anything wit
 ## :package: Modules / Packages:
 * speech_recognition: https://pypi.org/project/SpeechRecognition/
 * moviepy: https://pypi.org/project/moviepy/
-* send2trash: https://pypi.org/project/Send2Trash/
 * os: https://docs.python.org/3/library/os.html
 * time: https://docs.python.org/3/library/time.html
 * pydub: https://pypi.org/project/pydub/
