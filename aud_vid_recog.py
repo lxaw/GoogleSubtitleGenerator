@@ -15,6 +15,8 @@ class AudioVideoRecognizer():
 
         self.CWD = os.getcwd()
         self.TEMP_AUD = os.path.join(self.CWD,"temp_aud")
+        if not os.path.exists(self.TEMP_AUD):
+            os.makedirs(self.TEMP_AUD)
 
     def trash_file(self,file_path):
         #sends file to trash
