@@ -3,6 +3,8 @@ from audio_dicer import AudioDicer
 import os
 import time
 import moviepy.editor as mp
+# from subtitle_logging import get_logger
+import logging
 
 ##Created by Lex Whalen 2/19/21
 class AudioVideoRecognizer():
@@ -17,18 +19,24 @@ class AudioVideoRecognizer():
         if not os.path.exists(self.TEMP_AUD):
             os.makedirs(self.TEMP_AUD)
 
+        self.log = logging.getLogger('subtitle_logging')
+
     def trash_file(self,file_path):
         #sends file to trash
         os.remove(file_path)
 
     def slice_aud(self,file_path):
         """Dices audio into SECONDS seconds. I did 30 in the video, but 45 works better."""
+
+        #logs splice
+        self.log.info("Splicing audio file: %s", file_path)
         SECONDS = 30
         self.DICER.multiple_split(file_path,SECONDS)
 
     def transcribe(self,file_name,lang):
         """Transcribes the audio. Returns a list of the words found in that audio segment."""
 
+        self.log.info("Transcribing...")
         with sr.WavFile(file_name) as source: #use f.wav as aud source
             audio = self.RECOG.record(source) #get aud data
             try:
@@ -53,7 +61,7 @@ class AudioVideoRecognizer():
 
         if not isVideo:
             #already working with only an audio file
-            words = transcribe(f,lang)
+            words = self.transcribe(f,lang)
 
             return words
 
@@ -96,8 +104,6 @@ class AudioVideoRecognizer():
                 self.trash_file(f_path)
 
             
-
-
             #finally return words
             return master_words
 

@@ -2,6 +2,7 @@ import os
 from episode_scraper import EpisodeScraper
 from aud_vid_recog import AudioVideoRecognizer
 from text_recog import TextRecognizer
+from subtitle_logging import log_init
 
 ##Created by Lex Whalen 2/19/21
 class MasterTranslate():
@@ -15,6 +16,9 @@ class MasterTranslate():
         self.AudVidRecog = AudioVideoRecognizer()
         self.EpScraper = EpisodeScraper()
 
+        ### used for logging 
+        self.log = log_init(log_to_console=1)
+
     
     def show_lang_options(self):
         print("See the following link for all language codes:")
@@ -26,6 +30,7 @@ class MasterTranslate():
             f_path = os.path.join(folder_path,f_name)
             text_path = os.path.join(self.SUB_FOLDER,"{}_sub{}".format(f_name.split(".")[0],num))
 
+            self.log.info("Scraping video path: %s", f_path)
             self.EpScraper.scrape_episode(src_lang,f_path,out_path = text_path)
 
 if __name__ == "__main__":
@@ -36,7 +41,6 @@ if __name__ == "__main__":
     YOUR_FLDR = "YOUR_SHOW_FLDR"
 
     MT.scrape_show(YOUR_LANG,YOUR_FLDR)
-    print("Done")
 
 #TODO Timestamps
 #TODO Subtitle format

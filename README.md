@@ -23,7 +23,8 @@ for something like getting translations of audiobooks, or podcasts (anything wit
 * time: https://docs.python.org/3/library/time.html
 * pydub: https://pypi.org/project/pydub/
 * math: https://docs.python.org/3/library/math.html
-* ffmeg, avapi (has to be run on linux)
+* srt https://pypi.org/project/srt/
+* ffmeg, avapi (has to be run on linux or windows wsl)
 * google_trans_new
 
 

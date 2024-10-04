@@ -1,2 +1,4 @@
 /__pycache__
 /temp_aud
+.vscode
+logs
