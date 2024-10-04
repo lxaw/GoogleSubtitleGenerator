@@ -3,7 +3,7 @@ from audio_dicer import AudioDicer
 import os
 import time
 import moviepy.editor as mp
-# from subtitle_logging import get_logger
+import shutil
 import logging
 
 ##Created by Lex Whalen 2/19/21
@@ -16,8 +16,12 @@ class AudioVideoRecognizer():
 
         self.CWD = os.getcwd()
         self.TEMP_AUD = os.path.join(self.CWD,"temp_aud")
-        if not os.path.exists(self.TEMP_AUD):
-            os.makedirs(self.TEMP_AUD)
+        if os.path.exists(self.TEMP_AUD):
+            shutil.rmtree(self.TEMP_AUD)
+        os.makedirs(self.TEMP_AUD)
+
+
+        self.log = logging.getLogger('subtitle_logging')
 
         self.log = logging.getLogger('subtitle_logging')
 
@@ -68,7 +72,9 @@ class AudioVideoRecognizer():
         elif isVideo:
             #convert to wav and read
             
-            aud_path_name = "temp{}.wav".format(len(os.listdir(self.TEMP_AUD)))
+            filename = os.path.basename(f)
+            filename_no_extension = os.path.splitext(filename)[0]
+            aud_path_name = "{}.wav".format(filename_no_extension)
             aud_path_abs = os.path.join(self.TEMP_AUD,aud_path_name)
 
             clip = mp.VideoFileClip(f)
