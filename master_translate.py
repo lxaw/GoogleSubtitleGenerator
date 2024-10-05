@@ -41,8 +41,3 @@ if __name__ == "__main__":
     YOUR_FLDR = "YOUR_SHOW_FLDR"
 
     MT.scrape_show(YOUR_LANG,YOUR_FLDR)
-
-#TODO Timestamps
-#TODO Subtitle format
-#TODO Translation
-#TODO Ease of use
