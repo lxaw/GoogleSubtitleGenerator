@@ -19,10 +19,7 @@ class AudioVideoRecognizer():
         if os.path.exists(self.TEMP_AUD):
             shutil.rmtree(self.TEMP_AUD)
         os.makedirs(self.TEMP_AUD)
-
-
-        self.log = logging.getLogger('subtitle_logging')
-
+        
         self.log = logging.getLogger('subtitle_logging')
 
     def trash_file(self,file_path):
