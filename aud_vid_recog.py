@@ -3,7 +3,8 @@ from audio_dicer import AudioDicer
 import os
 import time
 import moviepy.editor as mp
-import send2trash
+import shutil
+import logging
 
 ##Created by Lex Whalen 2/19/21
 class AudioVideoRecognizer():
@@ -15,19 +16,28 @@ class AudioVideoRecognizer():
 
         self.CWD = os.getcwd()
         self.TEMP_AUD = os.path.join(self.CWD,"temp_aud")
+        if os.path.exists(self.TEMP_AUD):
+            shutil.rmtree(self.TEMP_AUD)
+        os.makedirs(self.TEMP_AUD)
+        
+        self.log = logging.getLogger('subtitle_logging')
 
     def trash_file(self,file_path):
         #sends file to trash
-        send2trash.send2trash(file_path)
+        os.remove(file_path)
 
     def slice_aud(self,file_path):
         """Dices audio into SECONDS seconds. I did 30 in the video, but 45 works better."""
+
+        #logs splice
+        self.log.info("Splicing audio file: %s", file_path)
         SECONDS = 30
         self.DICER.multiple_split(file_path,SECONDS)
 
     def transcribe(self,file_name,lang):
         """Transcribes the audio. Returns a list of the words found in that audio segment."""
 
+        self.log.info("Transcribing...")
         with sr.WavFile(file_name) as source: #use f.wav as aud source
             audio = self.RECOG.record(source) #get aud data
             try:
@@ -52,14 +62,16 @@ class AudioVideoRecognizer():
 
         if not isVideo:
             #already working with only an audio file
-            words = transcribe(f,lang)
+            words = self.transcribe(f,lang)
 
             return words
 
         elif isVideo:
             #convert to wav and read
             
-            aud_path_name = "temp{}.wav".format(len(os.listdir(self.TEMP_AUD)))
+            filename = os.path.basename(f)
+            filename_no_extension = os.path.splitext(filename)[0]
+            aud_path_name = "{}.wav".format(filename_no_extension)
             aud_path_abs = os.path.join(self.TEMP_AUD,aud_path_name)
 
             clip = mp.VideoFileClip(f)
@@ -95,8 +107,6 @@ class AudioVideoRecognizer():
                 self.trash_file(f_path)
 
             
-
-
             #finally return words
             return master_words
 
